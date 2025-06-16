@@ -1,5 +1,10 @@
 require('dotenv').config(); 
 const express = require('express');
+const app = express();
+
+app.set('trust proxy', true); 
+
+
 const mongoose = require('mongoose');
 const cors = require('cors');
 const morgan = require('morgan');
@@ -23,9 +28,6 @@ const adminRoutes = require('./routes/adminRoutes');
 const doctorAuthRoutes = require('./routes/doctorAuthRoutes');
 const aiRoutes = require('./routes/aiHistoryRoute');
 const paymentRoutes = require('./routes/paymentRoutes');
-
-
-const app = express();
 
 
 
