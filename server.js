@@ -2,14 +2,13 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 
-app.set('trust proxy', true); 
 
 
 const mongoose = require('mongoose');
 const cors = require('cors');
 const morgan = require('morgan');
 const compression = require('compression');
-const rateLimit = require('express-rate-limit');
+
 const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
@@ -39,12 +38,7 @@ const paymentRoutes = require('./routes/paymentRoutes');
 
 
 
-const limiter = rateLimit({
-  max: 100,
-  windowMs: 60 * 60 * 1000,
-  message: 'Too many requests from this IP, please try again in an hour!'
-});
-app.use('/api', limiter);
+
 
 
 app.use(express.json({ limit: '10kb' }));
